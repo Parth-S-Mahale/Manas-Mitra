@@ -3,6 +3,7 @@ const bcrypt=require("bcrypt")
 const jwt=require("jsonwebtoken");
 const otpGenerator=require("otp-generator");
 const OTP=require("../models/otp.model.js")
+const mongoose = require("mongoose")
 
  
 require("dotenv").config()
@@ -49,7 +50,6 @@ exports.sendOTP=async(req,res)=>{
         message:"OTP Sent Successfully",
         otp
     })
-
 
 
 
@@ -220,7 +220,7 @@ exports.signUp=async(req,res)=>{
         })
 
     }catch(error){
-        console.log(err)
+        console.log(error)
         res.status(500).json({
             success:false,
             message:"Internal server error during Signup"
